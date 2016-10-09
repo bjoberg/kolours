@@ -1,14 +1,24 @@
 <!-- Header -->
 <header>
-  <p>[Logo]</p>
+  <md-toolbar>
+    <md-icon><i class="material-icons">panorama_fish_eye</i></md-icon>
+  </md-toolbar>
 </header>
+
 <!-- Main content -->
-<div class="main-content">
-  <h1>{{title}}</h1>
-  <p>What is your favorite <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">hex</a> color?</p>
+<div class="app-content">
+  <div class="main">
+    <h1>{{title}}</h1>
+    <p>What is your favorite <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">hex</a> color?</p>
+    <md-input placeholder=""></md-input>
+    <button md-fab><i class="material-icons">navigate_next</i></button>
+  </div>
 </div>
+
+
 <!-- Footer -->
 <footer>
-  <p>[Website], [Github]</p>
-  <p>[Email]</p>
+  <md-toolbar>
+    <md-icon><i class="fa fa-github" aria-hidden="true"></i></md-icon>
+  </md-toolbar>
 </footer>
