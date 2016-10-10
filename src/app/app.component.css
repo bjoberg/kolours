@@ -1,25 +1,5 @@
-/* Header */
-header {
-    width: 100%;
-    min-height: 40px;
-    background-color: transparent;
-}
-
 /* App Content */
-.main {
+.app-content {
     text-align: center;
-}
-
-md-toolbar {
-    background-color: transparent;
-}
-
-/* Footer */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    min-height: 40px;
-    background-color: transparent;
+    padding-top: 10%;
 }

@@ -1,0 +1,28 @@
+header {
+    width: 100%;
+    min-height: 40px;
+}
+
+md-toolbar {
+    background-color: transparent;
+}
+
+.push-right {
+  flex: 1 1 auto;
+}
+
+a {
+    color: #000000;
+}
+
+a:hover {
+    color: #000000;
+}
+
+a:visited {
+    color: #000000;
+}
+
+a::active {
+    color: #000000;
+}

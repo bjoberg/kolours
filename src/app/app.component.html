@@ -1,24 +1,13 @@
 <!-- Header -->
-<header>
-  <md-toolbar>
-    <md-icon><i class="material-icons">panorama_fish_eye</i></md-icon>
-  </md-toolbar>
-</header>
+<app-header></app-header>
 
 <!-- Main content -->
 <div class="app-content">
-  <div class="main">
-    <h1>{{title}}</h1>
-    <p>What is your favorite <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">hex</a> color?</p>
-    <md-input placeholder=""></md-input>
-    <button md-fab><i class="material-icons">navigate_next</i></button>
-  </div>
+  <!--<p>Bring this page to life with your favorite <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">hex</a> color!</p>-->
+  <h1> 
+    <md-input placeholder="" maxlength="8" md-tooltip="Input your favorite hex color!" tooltip-position="below">
+      <span md-prefix>&#35; </span>
+      <span md-suffix><button md-mini-fab [disabled]="isDisabled"><i class="material-icons">navigate_next</i></button></span>
+    </md-input>
+  </h1>
 </div>
-
-
-<!-- Footer -->
-<footer>
-  <md-toolbar>
-    <md-icon><i class="fa fa-github" aria-hidden="true"></i></md-icon>
-  </md-toolbar>
-</footer>
