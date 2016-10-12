@@ -1,6 +1,6 @@
 # Kolours
 
-Web app that lets you play around with your favorite hexcidecimal colors.
+Web app that lets you play around with your favorite colors.
 
 ## Installation
 
