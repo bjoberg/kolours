@@ -1,6 +1,10 @@
 # Kolours
 
-Web app that lets you play around with your favorite colors.
+// TODO: Insert https://travis-ci.org/ test results here
+
+Kolours is a web app that lets you play with your favorite colors. 
+
+A personal design project, my goal with Kolours was to create the simplest, most robust, and documented web application I could. Kolours doesn't do much, but with this project I attempted to move out of my comfort zone and learn how to build a real piece of software.
 
 ## Installation
 
@@ -10,6 +14,8 @@ Web app that lets you play around with your favorite colors.
 4. Install the Angular 2 [CLI](https://cli.angular.io/)
 5. Within your command line, navigate to your local project directory and run `npm install`
 6. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Testing
 
 ### Running unit tests
 
