@@ -5,9 +5,13 @@
 <div class="app-content">
   <!--<p>Bring this page to life with your favorite <a target="_blank" href="http://htmlcolorcodes.com/color-picker/">hex</a> color!</p>-->
   <h1> 
-    <md-input placeholder="" maxlength="8" md-tooltip="Input your favorite hex color!" tooltip-position="below">
-      <span md-prefix>&#35; </span>
-      <span md-suffix><button md-mini-fab [disabled]="isDisabled"><i class="material-icons">navigate_next</i></button></span>
-    </md-input>
+    (
+    <md-input placeholder="" maxlength="3"></md-input>
+    ,
+    <md-input placeholder="" maxlength="3"></md-input>
+    ,
+    <md-input placeholder="" maxlength="3"></md-input>
+    )
+    <button md-mini-fab><i class="material-icons">navigate_next</i></button>
   </h1>
 </div>
