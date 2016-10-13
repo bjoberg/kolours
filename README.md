@@ -1,6 +1,6 @@
 # Kolours
 
-// TODO: Insert https://travis-ci.org/ test results here
+[![Build Status](https://travis-ci.org/bjoberg/kolours.svg?branch=master)](https://travis-ci.org/bjoberg/kolours)
 
 Kolours is a web app that lets you play with your favorite colors. 
 
