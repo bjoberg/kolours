@@ -4,7 +4,7 @@
 
 Kolours is a web app that lets you play with your favorite background colors. 
 
-A personal design project, my goal with Kolours was to create the simplest, most robust, and documented web application I could. Kolours doesn't do much, but with this project I attempted to move out of my comfort zone and learn how to build a real piece of software.
+A personal design project, my goal with Kolours was to create the simplest, most robust web application I could. Kolours doesn't do much, but with this project I attempted to move out of my comfort zone and learn how to build a real piece of software.
 
 ## Installation
 
