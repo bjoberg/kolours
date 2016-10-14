@@ -5,8 +5,8 @@ node_js:
 before_script:
   - 'export CHROME_BIN=chromium-browser'
   - 'export DISPLAY=:99.0'
-  - 'npm install -g angular-cli'
-  - 'npm install' #install npm packages
+  - 'npm install -g angular-cli' # Install Angular-cli
+  - 'npm install -g process-nextick-args' 
 
 after_script:
   
