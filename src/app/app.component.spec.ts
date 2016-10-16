@@ -14,6 +14,7 @@ import { TestBed, async } from '@angular/core/testing';
 
 // Imports
 import { MaterialModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
@@ -29,7 +30,10 @@ describe('AppComponent: ', () => {
         AppComponent,
         HeaderComponent
       ],
-      imports: [ MaterialModule.forRoot() ],
+      imports: [ 
+        MaterialModule.forRoot(),
+        FormsModule 
+      ],
     });
   });
 
