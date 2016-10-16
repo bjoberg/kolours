@@ -1,14 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
-/*@import '~@angular/material/core/theming/prebuilt/deeppurple-amber.css';*/
-
 * {
     font-family: 'Open Sans', sans-serif;
-    font-weight: normal;
     font-style: normal;
+    /*color: rgb(255,255,255);  TODO: This must be customizable by the user*/
 }
 
 body {
-    background-color: #FAFAFA;
+    background-color: rgb(000,150,136); /* TODO: This must be customizable by the user*/
     padding: 0px !important;
     margin: 0px !important;
 }
