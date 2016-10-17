@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-
-// TODO make this it's own component
-export class RGB {
-  r: string;
-  g: string;
-  b: string;
-}
+import { RGB } from './RGB';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +8,6 @@ export class RGB {
 })
 
 export class AppComponent {
-  // @HostBinding('style.background-color') 
-
   title = 'Kolours';
   
   // Starting background color
@@ -26,6 +18,11 @@ export class AppComponent {
   };
 
   backgroundColor = "rgb(0,0,0);"
+
+  // TODO: make use of the constructor so rgb... is not a string
+  ngOnInit(): void {
+    document.body.style.background = "rgb(000,150,136)"
+  }
 
   /**
    * Fired when the user clicks the #update-background button. This function will read the current input values and set the background color to these values.
@@ -40,6 +37,9 @@ export class AppComponent {
 
     // 3. Set the background of the <body> to the new background color. Right now I am using direct DOM manipulation because I could not find a way to access the <body> via typescript. 
     document.body.style.background = updatedBackgroundColor;
-      // 3.1 In the future this is when the animation should happen 
+      // TODO: 3.1 In the future this is when the animation should happen 
+
+    // TODO: 4. Update the text colors
+
   }
 }

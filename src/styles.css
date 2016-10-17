@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: rgb(000,150,136); /* TODO: This must be customizable by the user*/
+    /*background-color: rgb(000,150,136);  TODO: This must be customizable by the user*/
     padding: 0px !important;
     margin: 0px !important;
 }
