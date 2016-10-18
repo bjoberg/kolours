@@ -13,7 +13,7 @@ For more information, please refer to the project [wiki](https://github.com/bjob
 ## Installation
 
 1. Install [node.js (v6.x.x or higher)](https://nodejs.org/en/download/current/).
-  * **Note**: To confirm that you have the correct version of npm installed on your computer, run `node -v`. If you do not have v6.x.x or higher, redownload the latest version of node.js.
+  * **Note**: To confirm that you have the correct version of node.js installed on your computer, run `node -v`. If you do not have v6.x.x or higher, redownload the latest version of node.js.
 2. Confirm your version of npm. You want v3.x.x or higher.
   * **Note**: npm comes packaged with node.js. To confirm that you have the correct version of npm installed on your computer run `npm -v`. If you do not have v3.x.x or higher, redownload the latest version of node.js.
 3. Install the [Angular 2 CLI](https://cli.angular.io/).
@@ -23,15 +23,9 @@ For more information, please refer to the project [wiki](https://github.com/bjob
 7. Once the development server has started, navigate to `http://localhost:4200/` to view the site locally.
   * **Note**: The app will automatically reload if you change any of the source files. So you do not need to keep running `ng-serve` everytime you edit a file.
 
-## Testing
+## Usage
 
-### Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-### Running end-to-end tests
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
-Before running the tests make sure you are serving the app via `ng serve`.
+// TODO
 
 ## Credits
 
