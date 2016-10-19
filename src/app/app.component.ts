@@ -30,9 +30,9 @@ export class AppComponent {
   }
 
   /**
-   * Fired when the user clicks the update-background-btn. This function will read the current input values and set the background color to these values.
+   * Called when the user clicks the update-background-btn. This function will read the current input values and set the background color to these values.
    * 
-   * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the new background  
+   * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the new background color. 
    */
   updateBackgroundColor(rgb) {
     // TODO: 1. Make sure the input fields are valid and have 3 digits
@@ -48,6 +48,11 @@ export class AppComponent {
 
   }
 
+  /**
+   * Called when an input goes out of focus
+   * 
+   * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the buttons new background color. 
+   */
   updateButtonBackground(rgb) {
     // TODO: 1. Make sure the input fields are valid and have 3 digits
 
@@ -57,10 +62,17 @@ export class AppComponent {
     // 3. Set the background color of the #update-background-btn
     this.updateBackgroundButtonColor = updatedBackgroundColor;
   
-    // TODO: 4. Move to the next input box
+    // TODO: 4. Update button text color
+
+    // TODO: 5. Move to the next input box
   }
 
-  getButtonBackgroundColor() {
+  /**
+   * Called by the #update-background-btn when anything on the page is updated to see what color it should be.
+   * 
+   * @return: valid rgb string
+   */
+  getButtonBackgroundColor(): string {
     return this.updateBackgroundButtonColor;
   }
 }
