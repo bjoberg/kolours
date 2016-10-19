@@ -9,28 +9,33 @@ import { RGB } from './RGB';
 
 export class AppComponent {
   title = 'Kolours';
-  
-  // Starting background color
-  rgb: RGB = {
-    r: '000',
-    g: '150',
-    b: '136'
-  };
+  updateBackgroundButtonColor: string;
+  backgroundColor: string;
+  rgb: RGB;
 
-  backgroundColor = "rgb(0,0,0);"
+  constructor() {
+    this.rgb = {
+      r: '100',
+      g: '200',
+      b: '136'
+    };
+
+    this.backgroundColor = "rgb(" + this.rgb.r + "," + this.rgb.g + "," + this.rgb.b + ")";
+    this.updateBackgroundButtonColor = "rgb(" + this.rgb.r + "," + this.rgb.g + "," + this.rgb.b + ")";
+  }
 
   // TODO: make use of the constructor so rgb... is not a string
   ngOnInit(): void {
-    document.body.style.background = "rgb(000,150,136)"
+    document.body.style.background = this.backgroundColor;
   }
 
   /**
-   * Fired when the user clicks the #update-background button. This function will read the current input values and set the background color to these values.
+   * Fired when the user clicks the update-background-btn. This function will read the current input values and set the background color to these values.
    * 
    * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the new background  
    */
   updateBackgroundColor(rgb) {
-    // 1. Make sure all of the inputs are in the correct form
+    // TODO: 1. Make sure the input fields are valid and have 3 digits
     
     // 2. Construct the new background color
     var updatedBackgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
@@ -41,5 +46,21 @@ export class AppComponent {
 
     // TODO: 4. Update the text colors
 
+  }
+
+  updateButtonBackground(rgb) {
+    // TODO: 1. Make sure the input fields are valid and have 3 digits
+
+    // 2. Construct the new color for the button
+    var updatedBackgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
+
+    // 3. Set the background color of the #update-background-btn
+    this.updateBackgroundButtonColor = updatedBackgroundColor;
+  
+    // TODO: 4. Move to the next input box
+  }
+
+  getButtonBackgroundColor() {
+    return this.updateBackgroundButtonColor;
   }
 }

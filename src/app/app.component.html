@@ -5,12 +5,12 @@
 <div class="app-content isWhite">
   <h1> 
     (
-    <md-input [(ngModel)]="rgb.r" maxlength="3"></md-input>
+    <md-input [(ngModel)]="rgb.r" (blur)="updateButtonBackground(rgb)" maxlength="3"></md-input>
     ,
-    <md-input [(ngModel)]="rgb.g" maxlength="3"></md-input>
+    <md-input [(ngModel)]="rgb.g" (blur)="updateButtonBackground(rgb)" maxlength="3"></md-input>
     ,
-    <md-input [(ngModel)]="rgb.b" maxlength="3"></md-input>
+    <md-input [(ngModel)]="rgb.b" (blur)="updateButtonBackground(rgb)" maxlength="3"></md-input>
     )
-    <button md-mini-fab id="update-background" (click)="updateBackgroundColor(rgb)"><i class="material-icons">navigate_next</i></button>
+    <button md-mini-fab id="update-background-btn" [style.background-color]="getButtonBackgroundColor()" (click)="updateBackgroundColor(rgb)"><i class="material-icons">navigate_next</i></button>
   </h1>
 </div>
