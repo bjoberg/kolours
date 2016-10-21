@@ -24,7 +24,6 @@ export class AppComponent {
     this.updateBackgroundButtonColor = "rgb(" + this.rgb.r + "," + this.rgb.g + "," + this.rgb.b + ")";
   }
 
-  // TODO: make use of the constructor so rgb... is not a string
   ngOnInit(): void {
     document.body.style.background = this.backgroundColor;
   }
@@ -35,7 +34,10 @@ export class AppComponent {
    * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the new background color. 
    */
   updateBackgroundColor(rgb) {
-    // TODO: 1. Make sure the input fields are valid and have 3 digits
+    // 1. Make sure the input fields are valid and have 3 digits
+    rgb.r = this.validateRgbValueLength(rgb.r);
+    rgb.g = this.validateRgbValueLength(rgb.g);
+    rgb.b = this.validateRgbValueLength(rgb.b);
     
     // 2. Construct the new background color
     var updatedBackgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
@@ -54,7 +56,11 @@ export class AppComponent {
    * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the buttons new background color. 
    */
   updateButtonBackground(rgb) {
+    // Note: Error when the text field doesn't have value
     // TODO: 1. Make sure the input fields are valid and have 3 digits
+    rgb.r = this.validateRgbValueLength(rgb.r);
+    rgb.g = this.validateRgbValueLength(rgb.g);
+    rgb.b = this.validateRgbValueLength(rgb.b);
 
     // 2. Construct the new color for the button
     var updatedBackgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
@@ -74,5 +80,35 @@ export class AppComponent {
    */
   getButtonBackgroundColor(): string {
     return this.updateBackgroundButtonColor;
+  }
+
+  /**
+   * Used to validate a single RGB value (rgb.r || rgb.g || rgb.b). This function validates a single value, not the whole RGB object. The goal of this function is to make sure an rgb value has a length of 3.
+   * 
+   * For example, if the current value of rgb.r == '10', this function will add a '0' to the beginning of the string, setting rgb.r to '010'.
+   * 
+   * @param value: string value (single RGB value) that should have a length of 3
+   * @return: string with a length of 3
+   */
+  private validateRgbValueLength(value): string {
+    if (value.length != 3) {
+      switch (value.length) {
+        case 0:
+          value = "000";
+          break;        
+        case 1:
+          value = "00" + value;
+          break;
+        case 2:
+          value = "0" + value;
+          break;
+        default:
+          console.log("There was an error while validating the rgb value, defaulting to '000'");
+          value = "000";
+          break;
+      }
+    }
+
+    return value;
   }
 }
