@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/bjoberg/kolours.svg?branch=master)](https://travis-ci.org/bjoberg/kolours)
 
-Kolours is a simple web app that asks the user to input an RGB color code. If the user selects that color, the background of the page will change to the selected color.
+Kolours is a simple web app that updates the page background when the user inputs an RGB color code.
 
 A personal design project, my goal with Kolours was to create the simplest, most robust web application that I could. Kolours doesn't do much, but with this project I attempted to build my first piece of "real" software that is fully functional, visually appealing, tested, and documented.
 
