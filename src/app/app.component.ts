@@ -34,10 +34,13 @@ export class AppComponent {
    * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the new background color. 
    */
   updateBackgroundColor(rgb) {
-    // 1. Make sure the input fields are valid and have 3 digits
+    // 1. Make sure the input fields have 3 digits
+    // TODO: update validateRgbValueLength method to make sure the inputs are only numbers
+    // TODO: update validateRgbValueLength method to make sure the inputs are not <0 or >250
     rgb.r = this.validateRgbValueLength(rgb.r);
     rgb.g = this.validateRgbValueLength(rgb.g);
     rgb.b = this.validateRgbValueLength(rgb.b);
+
     
     // 2. Construct the new background color
     var updatedBackgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
@@ -56,8 +59,9 @@ export class AppComponent {
    * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the buttons new background color. 
    */
   updateButtonBackground(rgb) {
-    // Note: Error when the text field doesn't have value
-    // TODO: 1. Make sure the input fields are valid and have 3 digits
+    // 1. Make sure the input fields are valid and have 3 digits
+    // TODO: update validateRgbValueLength method to make sure the inputs are only numbers
+    // TODO: update validateRgbValueLength method to make sure the inputs are not <0 or >250
     rgb.r = this.validateRgbValueLength(rgb.r);
     rgb.g = this.validateRgbValueLength(rgb.g);
     rgb.b = this.validateRgbValueLength(rgb.b);
