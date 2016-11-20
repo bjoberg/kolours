@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 import { RGB } from './RGB';
+import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent {
   backgroundColor: string;
   rgb: RGB;
 
-  constructor() {
+  constructor(public snackBar: MdSnackBar, public viewContainerRef: ViewContainerRef) {
     this.rgb = {
       r: '100',
       g: '200',
@@ -59,17 +60,22 @@ export class AppComponent {
    * @param rgb: RGB object bound to the input fields. Holds the rgb(,,) values for the buttons new background color. 
    */
   updateButtonBackground(rgb) {
-    // 1. Make sure the input fields are valid and have 3 digits
-    // TODO: update validateRgbValueLength method to make sure the inputs are only numbers
-    // TODO: update validateRgbValueLength method to make sure the inputs are not <0 or >250
+    // 1. Make sure the inputs are not <0 or >250
+    rgb.r = this.validateRgbValueRange(rgb.r);
+    rgb.g = this.validateRgbValueRange(rgb.g);
+    rgb.b = this.validateRgbValueRange(rgb.b);
+
+    // 2. Make sure the input fields are valid and have 3 digits
     rgb.r = this.validateRgbValueLength(rgb.r);
     rgb.g = this.validateRgbValueLength(rgb.g);
     rgb.b = this.validateRgbValueLength(rgb.b);
+    
+    // 3. TODO: update validateRgbValueLength method to make sure the inputs are only numbers
 
-    // 2. Construct the new color for the button
+    // 4. Construct the new color for the button
     var updatedBackgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
 
-    // 3. Set the background color of the #update-background-btn
+    // 5. Set the background color of the #update-background-btn
     this.updateBackgroundButtonColor = updatedBackgroundColor;
   
     // TODO: 4. Update button text color
@@ -113,6 +119,25 @@ export class AppComponent {
       }
     }
 
+    return value;
+  }
+
+  /**
+   * Used to validate a single RGB value (rgb.r || rgb.g || rgb.b). This function validates a single value, not the whole RGB object. This function makes sure an rgb value is > 0 and < 250.
+   * 
+   * @param value: string value (single RGB value) that should be > 0 and < 250
+   * @return: value > 0 and < 250
+   */
+  private validateRgbValueRange(value): string {
+    let config = new MdSnackBarConfig(this.viewContainerRef);
+
+    if (value > 250) {
+      value = '250';
+      this.snackBar.open('Value cannot be greater than 250', 'Okay', config);
+    } else if (value < 0) {
+      value = '000'
+      this.snackBar.open('Value cannot be less than 0', 'Okay', config);
+    }
     return value;
   }
 }
