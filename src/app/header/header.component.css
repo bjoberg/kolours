@@ -11,3 +11,7 @@ md-toolbar {
 .push-right {
   flex: 1 1 auto;
 }
+
+a {
+    color: inherit;
+}
