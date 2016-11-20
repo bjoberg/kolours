@@ -28,6 +28,18 @@ testem.log
 /e2e/*.js
 /e2e/*.map
 
+<<<<<<< HEAD
 #System Files
 .DS_Store
 Thumbs.db
+=======
+# System Files
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code
+.vscode/*
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+>>>>>>> 9995efebf3db079decf2e718fb3724982e6e6b32

@@ -1,0 +1,13 @@
+/* App Content */
+.app-content {
+    text-align: center !important;
+    padding-top: 10%;
+}
+
+md-input {
+    width: 60px;
+}
+
+h1 {
+    font-weight: 200 !important;
+}
