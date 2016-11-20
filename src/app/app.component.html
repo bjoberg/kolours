@@ -1,8 +1,8 @@
 <!-- Header -->
-<app-header></app-header>
+<app-header [style.color]="getFontColorOfBodyElements()"></app-header>
 
 <!-- Main content -->
-<div class="app-content isWhite">
+<div class="app-content" [style.color]="getFontColorOfBodyElements()">
   <h1> 
     rgb (
     <md-input [(ngModel)]="rgb.r" (blur)="updateButtonBackground(rgb)" maxlength="3"></md-input>
@@ -11,6 +11,6 @@
     ,
     <md-input [(ngModel)]="rgb.b" (blur)="updateButtonBackground(rgb)" maxlength="3"></md-input>
     )
-    <button md-mini-fab id="update-background-btn" [style.background-color]="getButtonBackgroundColor()" (click)="updateBackgroundColor(rgb)"><i class="material-icons">navigate_next</i></button>
+    <button md-mini-fab id="update-background-btn" [style.background-color]="getButtonBackgroundColor()" [style.color]="getButtonBackgroundFontColor()" (click)="updateBackgroundColor(rgb)"><i class="material-icons">navigate_next</i></button>
   </h1>
 </div>
