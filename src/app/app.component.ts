@@ -15,25 +15,25 @@ export class AppComponent {
   fontColorOfBodyElements: string;
   updateBackgroundButtonColor: string;
   updateBackgroundButtonFontColor: string;
-  rgb: RGB; // TODO: Convert RGB values to number... not string
+  rgb: RGB;
 
   /**
    * Initiate the app. Create new snackbar, viewContainerRef, and initiate variables.
    */
   constructor(public snackBar: MdSnackBar, public viewContainerRef: ViewContainerRef) {
     this.rgb = {
-      r: '100',
-      g: '200',
-      b: '136'
+      r: 100,
+      g: 200,
+      b: 136
     };
 
     // General
-    this.backgroundColor = "rgb(" + this.rgb.r + "," + this.rgb.g + "," + this.rgb.b + ")";
-    this.fontColorOfBodyElements = "rgb(250,250,250)";
+    this.backgroundColor = this.rgbToString(this.rgb);
+    this.fontColorOfBodyElements = "rgb(250,250,250)"; // TODO: Make this better
 
     // #update-background-btn specific
-    this.updateBackgroundButtonColor = "rgb(" + this.rgb.r + "," + this.rgb.g + "," + this.rgb.b + ")";
-    this.updateBackgroundButtonFontColor = "rgb(250,250,250)";
+    this.updateBackgroundButtonColor = this.rgbToString(this.rgb);
+    this.updateBackgroundButtonFontColor = "rgb(250,250,250)"; // TODO: Make this better
   }
 
   /**
@@ -52,14 +52,11 @@ export class AppComponent {
     // 1. Make sure the rgb values are valid
     rgb = this.validateRgbObject(rgb);
 
-    // 2. Construct the new background color
-    var updatedBackgroundColor = "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
-
-    // 3. Set the background of the <body> to the new background color. Right now I am using direct DOM manipulation because I could not find a way to access the <body> via typescript. 
-    document.body.style.background = updatedBackgroundColor;
-      // TODO: 3.1 In the future this is when the animation should happen 
+    // TODO: There should be some animation here
+    // 2. Set the background of the <body> to the new background color. Right now I am using direct DOM manipulation because I could not find a way to access the <body> via typescript. 
+    document.body.style.background = this.rgbToString(rgb); 
     
-    // 4. Update the all of the font colors
+    // 3. Update the all of the font colors
     let fontColor = this.setFontColor(rgb);
     this.fontColorOfBodyElements = this.rgbToString(fontColor);
   }
@@ -79,10 +76,13 @@ export class AppComponent {
     // 3. Set the font color of the #update-background-btn
     let fontColor = this.setFontColor(rgb);
     this.updateBackgroundButtonFontColor = this.rgbToString(fontColor);
-
-    // TODO: 4. Move to the next input box
   }
 
+  /**
+   * Convert RGB object to string value that can be read by DOM
+   * 
+   * @return: string value of the RGB object
+   */
   private rgbToString(rgb): string {
     return "rgb(" + rgb.r + "," + rgb.g + "," + rgb.b + ")";
   }
@@ -95,13 +95,13 @@ export class AppComponent {
    */
   private setFontColor(rgb): RGB {
     var fontColor: RGB;
-    let fontValue = (rgb.r*0.299) + (rgb.g*0.587) + (rgb.b*0.114)
+    let colorValue = (rgb.r * 0.299) + (rgb.g * 0.587) + (rgb.b * 0.114)
 
-    if (fontValue > 186) {
-      fontColor = {r: '000', g: '000', b: '000'};
+    if (colorValue > 186) {
+      fontColor = {r: 0, g: 0, b: 0};
       return fontColor;
     } else {
-      fontColor = {r: '250', g: '250', b: '250'};
+      fontColor = {r: 250, g: 250, b: 250};
       return fontColor;
     }
   }
@@ -111,7 +111,7 @@ export class AppComponent {
    * 
    * @return: valid rgb string
    */
-  getFontColorOfBodyElements(): string {
+  public getFontColorOfBodyElements(): string {
     return this.fontColorOfBodyElements;
   }
 
@@ -120,7 +120,7 @@ export class AppComponent {
    * 
    * @return: valid rgb string
    */
-  getButtonBackgroundColor(): string {
+  public getButtonBackgroundColor(): string {
     return this.updateBackgroundButtonColor;
   }
 
@@ -129,7 +129,7 @@ export class AppComponent {
    * 
    * @return: valid rgb string
    */
-  getButtonBackgroundFontColor(): string {
+  public getButtonBackgroundFontColor(): string {
     return this.updateBackgroundButtonFontColor;
   }
 
@@ -139,64 +139,53 @@ export class AppComponent {
    * @return: a valid RGB object
    */
   private validateRgbObject(rgb): RGB {
-    // 1. TODO: update validateRgbValueLength method to make sure the inputs are only numbers
+    // 1. Make sure the input fields do not have atleast 1 and no more than 3 digits
+    rgb.r = this.validateRgbValueLength(rgb.r);
+    rgb.g = this.validateRgbValueLength(rgb.g);
+    rgb.b = this.validateRgbValueLength(rgb.b);
+
     // 2. Make sure the inputs are not <0 or >250
     rgb.r = this.validateRgbValueRange(rgb.r);
     rgb.g = this.validateRgbValueRange(rgb.g);
     rgb.b = this.validateRgbValueRange(rgb.b);
 
-    // 3. Make sure the input fields are valid and have 3 digits
-    rgb.r = this.validateRgbValueLength(rgb.r);
-    rgb.g = this.validateRgbValueLength(rgb.g);
-    rgb.b = this.validateRgbValueLength(rgb.b);
-
     return rgb;
   }
 
   /**
-   * Used to validate the length of a single RGB value (rgb.r || rgb.g || rgb.b). This function validates a single value, not the whole RGB object. The goal of this function is to make sure an rgb value has a length of 3.
+   * Make sure the RGB object is not longer than 3.
    * 
-   * For example, if the current value of rgb.r == '10', this function will add a '0' to the beginning of the string, setting rgb.r to '010'.
-   * 
-   * @param value: string value (single RGB value) that should have a length of 3
-   * @return: string with a length of 3
+   * @param value: single RGB value
+   * @return: value if value > 3 else return 0
    */
-  private validateRgbValueLength(value): string {
-    if (value.length != 3) {
-      switch (value.length) {
-        case 0:
-          value = "000";
-          break;        
-        case 1:
-          value = "00" + value;
-          break;
-        case 2:
-          value = "0" + value;
-          break;
-        default:
-          console.log("There was an error while validating the rgb value, defaulting to '000'");
-          value = "000";
-          break;
-      }
-    }
+  private validateRgbValueLength(value): number {
+    let config = new MdSnackBarConfig(this.viewContainerRef);
 
-    return value;
+    if (value === null || value == null || value == 'undefined') {
+      this.snackBar.open('Oops... you forgot a value', 'Okay', config);
+      return 0;
+    } else if (value.length > 3) {
+      this.snackBar.open('Value cannot be longer than 4', 'Okay', config);
+      return 0; 
+    } else {
+      return value;
+    }
   }
 
   /**
    * Used to validate the range of a single RGB value (rgb.r || rgb.g || rgb.b). This function validates a single value, not the whole RGB object. This function makes sure an rgb value is > 0 and < 250.
    * 
-   * @param value: string value (single RGB value) that should be > 0 and < 250
+   * @param value: single RGB value that should be > 0 and < 250
    * @return: value > 0 and < 250
    */
-  private validateRgbValueRange(value): string {
+  private validateRgbValueRange(value): number {
     let config = new MdSnackBarConfig(this.viewContainerRef);
 
     if (value > 250) {
-      value = '250';
+      value = 250;
       this.snackBar.open('Value cannot be greater than 250', 'Okay', config);
     } else if (value < 0) {
-      value = '000'
+      value = 0
       this.snackBar.open('Value cannot be less than 0', 'Okay', config);
     }
     return value;
