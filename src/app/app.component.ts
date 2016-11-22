@@ -165,7 +165,7 @@ export class AppComponent {
       this.snackBar.open('Oops... you forgot a value', 'Okay', config);
       return 0;
     } else if (value.length > 3) {
-      this.snackBar.open('Value cannot be longer than 4', 'Okay', config);
+      this.snackBar.open('Cannot be longer than 4', 'Okay', config);
       return 0; 
     } else {
       return value;
@@ -183,10 +183,10 @@ export class AppComponent {
 
     if (value > 250) {
       value = 250;
-      this.snackBar.open('Value cannot be greater than 250', 'Okay', config);
+      this.snackBar.open('Cannot be greater than 250', 'Okay', config);
     } else if (value < 0) {
       value = 0
-      this.snackBar.open('Value cannot be less than 0', 'Okay', config);
+      this.snackBar.open('Cannot be less than 0', 'Okay', config);
     }
     return value;
   }
