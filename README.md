@@ -8,8 +8,6 @@ A personal design project, my goal with Kolours was to create the simplest, most
 
 **Demo**: [https://bjoberg.github.io/kolours/](https://bjoberg.github.io/kolours/)
 
-For more information, please refer to the project [wiki](https://github.com/bjoberg/kolours/wiki).
-
 ## Installation
 
 1. Install [node.js (v6.x.x or higher)](https://nodejs.org/en/download/current/).
@@ -23,9 +21,9 @@ For more information, please refer to the project [wiki](https://github.com/bjob
 7. Once the development server has started, navigate to `http://localhost:4200/` to view the site locally.
   * **Note**: The app will automatically reload if you change any of the source files. So you do not need to keep running `ng serve` everytime you edit a file.
 
-## Usage
+## Testing
 
-// TODO
+ * Unit tests - [Karma] (https://karma-runner.github.io/1.0/index.html)
 
 ## Credits
 
