@@ -1,7 +1,5 @@
 # Kolours
 
-[![Build Status](https://travis-ci.org/bjoberg/kolours.svg?branch=master)](https://travis-ci.org/bjoberg/kolours)
-
 Kolours is a simple web app that updates the page background when the user inputs an RGB color code.
 
 **Demo**: [https://bjoberg.github.io/kolours/](https://bjoberg.github.io/kolours/)
